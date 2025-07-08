@@ -24,7 +24,7 @@ pipeline {
             steps {
                 sh '''
                     echo "Copying WAR to Tomcat container..."
-                    docker cp target/employee-manager-1.0.0.war webserver:/usr/local/tomcat/webapps/
+                    docker cp target/employee-manager-1.0.0.war webserver:/usr/local/tomee/webapps/
                 '''
             }
         }
@@ -36,3 +36,4 @@ pipeline {
         }
     }
 }
+
