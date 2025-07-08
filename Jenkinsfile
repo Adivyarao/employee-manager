@@ -20,6 +20,15 @@ pipeline {
             }
         }
 
+        stage('Deploy to Tomcat') {
+            steps {
+                sh '''
+                    echo "Copying WAR to Tomcat container..."
+                    docker cp target/employee-manager-1.0.0.war webserver:/usr/local/tomcat/webapps/
+                '''
+            }
+        }
+
         stage('Archive') {
             steps {
                 archiveArtifacts artifacts: 'target/*.war', fingerprint: true
@@ -27,3 +36,4 @@ pipeline {
         }
     }
 }
+
